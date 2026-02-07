@@ -10,7 +10,7 @@ const port = Number(process.env.PORT) || 3000;
 
 const { engine } = require('express-handlebars');
 
-const { notFound, errorHandler } = require('./middlewares');
+const { silence, notFound, errorHandler } = require('./middlewares');
 
 const routes = require('./routes');
 
@@ -23,8 +23,8 @@ app.set('views', './views');
 app.use(express.static('public'));
 
 // Routes
+app.use(silence);
 app.get('/', (req, res) => res.json({ status: 'ok' }));
-app.get('/favicon.ico', (req, res) => res.status(204));
 app.get('/home', (req, res) => res.render('home'));
 app.use('/api', routes);
 
