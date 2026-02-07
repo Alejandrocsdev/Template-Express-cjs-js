@@ -1,5 +1,9 @@
 require('dotenv').config({ quiet: true });
 
+// Process-level crash handlers (FAIL FAST)
+const crashHandlers = require('./process/crash');
+crashHandlers();
+
 const express = require('express');
 const app = express();
 const port = Number(process.env.PORT) || 3000;
@@ -29,4 +33,10 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Servers
-app.listen(port, () => console.info('[Server] listening on port', port));
+const server = app.listen(port, () => {
+  console.info('[Server] listening on port', port);
+});
+
+// Graceful shutdown (CLEAN EXIT)
+const shutdownHandlers = require('./process/shutdown');
+shutdownHandlers(server);
