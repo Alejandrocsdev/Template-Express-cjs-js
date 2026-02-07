@@ -27,6 +27,7 @@ const start = async () => {
   app.set('views', './views');
 
   // Static Files
+	app.use(express.json());
   app.use(express.static('public'));
 
   // Routes
