@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'User',
       tableName: 'users',
       underscored: true,
+      defaultScope: { attributes: { exclude: ['createdAt', 'updatedAt'] } },
+      scopes: {
+        admin: { attributes: { exclude: ['id'] } },
+      },
     },
   );
   return User;
