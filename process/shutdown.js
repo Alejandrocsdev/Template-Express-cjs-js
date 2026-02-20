@@ -24,8 +24,21 @@ const shutdownHandlers = (server) => {
     }, 10000);
   };
 
+	// Interrupt (Ctrl + C)
   process.on('SIGTERM', shutdown);
+	// Terminate (ps aux | grep node => kill <pid>)
   process.on('SIGINT', shutdown);
 };
 
 module.exports = shutdownHandlers;
+
+// ==============
+// Shutdown flow:
+// ==============
+// Stop accepting new connections
+// ↓
+// Allow existing connections to finish
+// ↓
+// Wait up to 10 seconds
+// ↓
+// Force exit even if sockets are still open
