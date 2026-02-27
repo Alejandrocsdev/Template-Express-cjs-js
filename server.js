@@ -1,6 +1,6 @@
 require('dotenv').config({ quiet: true });
 
-// Process-level crash handlers (FAIL FAST)
+// Crash handlers (FAIL FAST)
 require('./process').crashHandlers();
 
 const express = require('express');
@@ -26,7 +26,7 @@ const start = async () => {
   // 2. Establish public tunnel
   await connectNgrok(port);
 
-  // 3. Create app only after infra is ready
+  // 3. Create express instance
   const app = express();
 
   // Template Engine

@@ -23,8 +23,5 @@ module.exports = asyncHandler;
 // - If fn throws synchronously, the throw becomes a rejected Promise
 // - Does NOT rely on Express for error catching
 
-// Note:
-// - All 3 work for async / await or Promises
-
 // Reference:
 // https://expressjs.com/en/guide/error-handling.html

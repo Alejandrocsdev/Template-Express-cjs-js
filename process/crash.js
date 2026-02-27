@@ -11,6 +11,7 @@ const crashHandlers = () => {
 		console.error(error);
     process.exit(1);
   });
+	// Example:
 	// console.log(x);
 
   process.on('unhandledRejection', (reason) => {
@@ -18,6 +19,7 @@ const crashHandlers = () => {
 		console.error(reason);
     process.exit(1);
   });
+	// Example:
 	// Promise.reject(new Error('Test unhandled rejection'));
 };
 
