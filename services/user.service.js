@@ -7,3 +7,7 @@ exports.findAll = async () => {
 exports.create = async (payload = {}) => {
   return User.create(payload);
 };
+
+exports.delete = async (userId) => {
+  return User.destroy({ where: { id: userId } });
+};
