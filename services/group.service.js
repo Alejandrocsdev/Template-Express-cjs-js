@@ -1,4 +1,4 @@
-const Group = require('../db/mongodb/models/group');
+const Group = require('../db/mongodb/models/Group');
 
 exports.findAll = () => {
   return Group.find().lean();

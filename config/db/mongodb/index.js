@@ -9,7 +9,7 @@ const pass = process.env.MONGO_PASS;
 
 const connectMongoDB = () => {
   return mongoose
-    .connect(uri, { user, pass })
+    .connect(uri, { user, pass, serverSelectionTimeoutMS: 1000 })
     .then(() => {
       console.info('[MongoDB] connected');
     })
