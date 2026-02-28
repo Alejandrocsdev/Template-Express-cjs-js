@@ -2,14 +2,17 @@ const mongoose = require('mongoose');
 
 const { MONGO_HOST, MONGO_PORT, MONGO_DB } = process.env;
 
-const uri = `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`;
-
-const user = process.env.MONGO_USER;
-const pass = process.env.MONGO_PASS;
+const uri = `mongodb://${MONGO_HOST}:${MONGO_PORT}`;
 
 const connectMongoDB = () => {
   return mongoose
-    .connect(uri, { user, pass, serverSelectionTimeoutMS: 1000 })
+    .connect(uri, {
+			dbName: MONGO_DB,
+      user: process.env.MONGO_USER,
+      pass: process.env.MONGO_PASS,
+      authSource: process.env.MONGO_AUTH_SOURCE,
+      serverSelectionTimeoutMS: 1000,
+    })
     .then(() => {
       console.info('[MongoDB] connected');
     })
