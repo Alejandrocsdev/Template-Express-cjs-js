@@ -12,7 +12,7 @@ const connectNgrok = require('./config/ngrok');
 
 const { engine } = require('express-handlebars');
 
-const { silence, notFound, errorHandler } = require('./middlewares');
+const { cors, silence, notFound, errorHandler } = require('./middlewares');
 
 const serverError = require('./errors/serverError');
 
@@ -35,6 +35,7 @@ const start = async () => {
   app.set('views', './views');
 
   // Middlewares
+	app.use(cors);
   app.use(express.json());
   app.use(express.static('public'));
 
