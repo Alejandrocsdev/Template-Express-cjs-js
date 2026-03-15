@@ -24,7 +24,7 @@ const start = async () => {
 	await connectMongoDB();
 
   // 2. Establish public tunnel
-  // await connectNgrok(port);
+  await connectNgrok(port);
 
   // 3. Create express instance
   const app = express();
@@ -41,7 +41,7 @@ const start = async () => {
 
   // Routes
   app.use(silence);
-  app.get('/', (req, res) => res.json({ status: 'ok' }));
+  app.get('/', (req, res) => res.json({ status: 'ok_test' }));
   app.get('/home', (req, res) => res.render('home'));
   app.use('/api', routes);
 
