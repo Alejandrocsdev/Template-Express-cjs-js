@@ -41,7 +41,7 @@ const start = async () => {
 
   // Routes
   app.use(silence);
-  app.get('/', (req, res) => res.json({ status: 'ok_test_4' }));
+  app.get('/', (req, res) => res.json({ status: 'ok_test_5' }));
   app.get('/home', (req, res) => res.render('home'));
   app.use('/api', routes);
 
