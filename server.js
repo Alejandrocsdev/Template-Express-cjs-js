@@ -24,7 +24,7 @@ const start = async () => {
 	await connectMongoDB();
 
   // 2. Establish public tunnel
-  await connectNgrok(port);
+  // await connectNgrok(port);
 
   // 3. Create express instance
   const app = express();
