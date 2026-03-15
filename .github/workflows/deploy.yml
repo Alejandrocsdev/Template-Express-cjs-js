@@ -24,10 +24,10 @@ jobs:
             cd /home/alex/Documents/Template-Express-cjs-js
 
             echo "Pulling latest code"
-            git pull origin main
+            git pull origin main --quiet
 
             echo "Installing dependencies"
-            npm install --production
+            npm ci --omit=dev --silent
 
             echo "Restarting server"
             pm2 restart template-express
